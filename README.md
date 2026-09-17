@@ -1,14 +1,25 @@
 # 연관 질문 클릭 기반 학습 몰입도 및 결제 전환율 분석
 
-> 구독형 학습 플랫폼에서 **'연관 질문 클릭'이라는 능동적 학습 행동**이 학습 몰입도와 결제 전환에 미치는 영향을 분석하고, 이를 강화하기 위한 A/B 테스트를 설계한 프로젝트
+> 구독형 학습 플랫폼에서 **'연관 질문 클릭'이라는 능동적 학습 행동**이 학습 몰입도와 결제 전환에 미치는 영향을 분석하고,
+> 이를 강화하기 위한 A/B 테스트를 설계한 프로젝트
+
+<br>
 
 **분석 기간** 2026.04.18 ~ 2026.05.20 · **도구** Python, MySQL, Tableau · **데이터** 22개 테이블
 
-> **⚠️ 데이터 출처 관련**
+<br>
+
+> **⚠️ 데이터 관련**
 >
 > 본 프로젝트의 원본 데이터는 실제 기업으로부터 정식 계약을 통해 제공받은 자료로, 계약에 따라 원본 데이터의 복제·배포·공개 및 원본을 유추하거나 복원할 수 있는 형태의 공유가 금지되어 있다.
 >
-> 이에 따라 본 저장소에는 원본 데이터, DB 접속 정보, 실제 테이블·컬럼명을 포함하지 않는다. 분석 과정과 결과물만 개인 포트폴리오 목적으로 공개한다.
+> 이에 따라 본 저장소에는 원본 데이터, DB 접속 정보, 실제 테이블·컬럼명을 포함하지 않는다.
+> 분석 과정과 결과물만 개인 포트폴리오 목적으로 공개한다.
+<br>
+
+**📄프로젝트 요약 One Paper**
+
+[PDF 파일 보기](edu_subscription_conversion_onepaper.pdf)
 
 <br>
 
@@ -109,26 +120,6 @@
 <br>
 
 ## 📁 저장소 구조
-
-```
-edu-subscription-conversion/
-├── README.md
-├── requirements.txt
-├── .env.example  
-├── notebooks/ 
-│   ├── 01_acquisition.ipynb
-│   ├── 02_activation.ipynb
-│   ├── 03_retention.ipynb
-│   ├── 04_revenue.ipynb
-│   └── 05_core_analysis.ipynb
-├── reports/            
-│   ├── 01_aarrr_funnel_report.pdf
-│   ├── 02_engagement_conversion_report.pdf
-│   └── 03_ab_test_plan.pdf
-└── dashboard/        
-    ├── dashboard.png
-    └── dashboard.twbx
-```
 
 ```
 edu-subscription-conversion/
