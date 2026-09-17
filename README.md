@@ -9,9 +9,6 @@
 > 본 프로젝트의 원본 데이터는 실제 기업으로부터 정식 계약을 통해 제공받은 자료로, 계약에 따라 원본 데이터의 복제·배포·공개 및 원본을 유추하거나 복원할 수 있는 형태의 공유가 금지되어 있다.
 >
 > 이에 따라 본 저장소에는 원본 데이터, DB 접속 정보, 실제 테이블·컬럼명을 포함하지 않는다. 분석 과정과 결과물만 개인 포트폴리오 목적으로 공개한다.
-> 
-![Tableau Dashboard](dashboard/dashboard.png)
-🔗 [Tableau Public에서 직접 보기](https://public.tableau.com/views/_17792637582840/sheet0)
 
 <br>
 
@@ -76,6 +73,26 @@
 
 <br>
 
+## 📊 Tableau 대시보드
+
+🔗 [Tableau Public에서 직접 보기](https://public.tableau.com/views/_17792637582840/sheet0)
+
+![Tableau Dashboard](dashboard/dashboard.png)
+
+의사결정자가 연관 질문 CTA 개선 실험의 필요성을 빠르게 판단할 수 있도록, **행동 차이 → 학습 몰입 → 결제 전환 → 실험 제안** 흐름에 맞춰 구성했다.
+
+| 영역 | 구성 | 확인 포인트 |
+|---|---|---|
+| 상단 KPI | Retention 유저 수, 질문 클릭률, 완강률 차이, 구독 전환율 차이 | 핵심 결과를 한눈에 파악 |
+| 중앙 퍼널 | 첫 레슨 완료 → 학습 재진입 → 결제 페이지 진입 → 구독 완료 | 이탈이 집중되는 단계 진단 |
+| 학습 몰입도 | 레슨 완료 수(평균/중앙값), 콘텐츠 완강률 | 질문 클릭과 학습 지속성의 관련성 |
+| 수익 기여도 | ARPU, ARPPU, 매출 기여도 | 질문 클릭 유저의 매출 구조상 역할 |
+
+**활용** — 질문 클릭 여부 필터로 두 집단을 개별 확인하고, 퍼널 단계를 선택해 이탈 규모를 비교한다.
+(툴팁에 유저 수·전환율·차이값을 함께 노출해 세부 수치까지 확인할 수 있다.)
+
+<br>
+
 ## 🧪 제안: CTA 노출 방식 A/B 테스트
 
 관찰된 차이가 실제 인과 효과인지 검증하기 위해, 연관 질문 CTA의 노출 방식을 바꾸는 A/B 테스트를 설계했다.
@@ -86,7 +103,8 @@
 - **기대 효과** 클릭률 +3%p 개선 시 **연간 약 1,356만 원 추가 매출 기여** 추정
   <br>*산출 근거: 월 추가 클릭 유저 210명 × 12개월 × 클릭/미클릭 ARPU 차이 5,392원*
 
-> ⚠️ 본 분석은 상관관계 분석으로, 질문 클릭 유저의 높은 전환이 행동의 효과인지 선택 편향인지는 구분되지 않는다. 따라서 인과성 검증은 위 A/B 테스트를 통해 확인하는 것을 권장한다.
+> ⚠️ 본 분석은 상관관계 분석으로, 질문 클릭 유저의 높은 전환이 행동의 효과인지 선택 편향인지는 구분되지 않는다.
+> 따라서 인과성 검증은 위 A/B 테스트를 통해 확인하는 것을 권장한다.
 
 <br>
 
@@ -96,20 +114,40 @@
 edu-subscription-conversion/
 ├── README.md
 ├── requirements.txt
-├── .env.example                    # DB 접속 정보 템플릿 (.env 는 미포함)
-├── notebooks/                      # 분석 노트북 (AARRR 단계별)
+├── .env.example  
+├── notebooks/ 
 │   ├── 01_acquisition.ipynb
 │   ├── 02_activation.ipynb
 │   ├── 03_retention.ipynb
 │   ├── 04_revenue.ipynb
-│   └── 05_core_analysis.ipynb      # 질문 클릭 세그먼트 핵심 분석
-├── reports/                        # 원페이지 시각화 보고서 (PDF)
+│   └── 05_core_analysis.ipynb
+├── reports/            
 │   ├── 01_aarrr_funnel_report.pdf
 │   ├── 02_engagement_conversion_report.pdf
 │   └── 03_ab_test_plan.pdf
-└── dashboard/                      # Tableau 대시보드
-    ├── dashboard.twbx
-    └── dashboard.png
+└── dashboard/        
+    ├── dashboard.png
+    └── dashboard.twbx
+```
+
+```
+edu-subscription-conversion/
+├── dashboard/        
+│   ├── dashboard.twbx
+│   ├── dashboard.png
+├── notebooks/ 
+│   ├── 01_acquisition.ipynb
+│   ├── 02_activation.ipynb
+│   ├── 03_retention.ipynb
+│   ├── 04_revenue.ipynb
+│   └── 05_core_analysis.ipynb
+├── reports/            
+│   ├── 01_aarrr_funnel_report.pdf
+│   ├── 02_engagement_conversion_report.pdf
+│   └── 03_ab_test_plan.pdf
+├── .env.example  
+├── README.md
+├── requirements.txt
 ```
 
 <br>
@@ -128,9 +166,6 @@ pip install -r requirements.txt
 
 접속 정보는 저장소에 저장하지 않고 환경변수로 관리한다. `.env.example`을 참고해 프로젝트 루트에 `.env` 파일을 생성한다.
 
-```
-DB_URL=mysql+pymysql://USERNAME:PASSWORD@localhost:3306/edu_subs?charset=utf8mb4
-```
 ```
 DB_URL=mysql+pymysql://USERNAME:PASSWORD@localhost:3306/edu_subs?charset=utf8mb4
 ```
