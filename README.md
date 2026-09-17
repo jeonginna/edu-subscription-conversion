@@ -4,8 +4,12 @@
 
 **분석 기간** 2026.04.18 ~ 2026.05.20 · **도구** Python, MySQL, Tableau · **데이터** 22개 테이블
 
-> **데이터 관련** — 실제 기업의 서비스 데이터를 사용한 프로젝트로, 원본 데이터와 DB 접속 정보는 저장소에 포함하지 않는다. 분석 코드와 결과 지표만 공개하며, 지표는 집계값 기준이다.
-
+> **⚠️ 데이터 출처 관련**
+>
+> 본 프로젝트의 원본 데이터는 실제 기업으로부터 정식 계약을 통해 제공받은 자료로, 계약에 따라 원본 데이터의 복제·배포·공개 및 원본을 유추하거나 복원할 수 있는 형태의 공유가 금지되어 있다.
+>
+> 이에 따라 본 저장소에는 원본 데이터, DB 접속 정보, 실제 테이블·컬럼명을 포함하지 않는다. 분석 과정과 결과물만 개인 포트폴리오 목적으로 공개한다.
+> 
 ![Tableau Dashboard](dashboard/dashboard.png)
 🔗 [Tableau Public에서 직접 보기](https://public.tableau.com/views/_17792637582840/sheet0)
 
@@ -112,8 +116,7 @@ edu-subscription-conversion/
 
 ## ⚙️ 실행 환경
 
-원본 데이터가 포함되지 않아 노트북을 그대로 실행할 수는 없다.
-아래는 분석 당시의 환경 구성이며, 코드 구조와 쿼리 로직 확인용으로 참고 가능하다.
+원본 데이터가 포함되지 않아 노트북을 그대로 실행할 수는 없다. 아래는 분석 당시의 환경 구성이며, 코드 구조와 쿼리 로직 확인용으로 참고 가능하다.
 
 **패키지 설치**
 
@@ -125,6 +128,9 @@ pip install -r requirements.txt
 
 접속 정보는 저장소에 저장하지 않고 환경변수로 관리한다. `.env.example`을 참고해 프로젝트 루트에 `.env` 파일을 생성한다.
 
+```
+DB_URL=mysql+pymysql://USERNAME:PASSWORD@localhost:3306/edu_subs?charset=utf8mb4
+```
 ```
 DB_URL=mysql+pymysql://USERNAME:PASSWORD@localhost:3306/edu_subs?charset=utf8mb4
 ```
